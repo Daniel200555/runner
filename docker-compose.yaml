@@ -6,7 +6,7 @@ services:
     ports:
       - "3306:3306"
     entrypoint:
-      - MYSQL_ROOT_PASSWORD: dan12
-      - MYSQL_DATABASE: mydrive
-      - MYSQL_USER: danil
-      - MYSQL_PASSWORD: dan12
+      - MYSQL_ROOT_PASSWORD=dan12
+      - MYSQL_DATABASE=mydrive
+      - MYSQL_USER=danil
+      - MYSQL_PASSWORD=dan12
