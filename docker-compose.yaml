@@ -1,12 +1,13 @@
 version: '3.1'
 
 services:
-  db:
-    image: mysql
+  
+  postgres:
+    image: postgres:latest
+    container_name: postgres
     ports:
-      - "3306:3306"
-    entrypoint:
-      - MYSQL_ROOT_PASSWORD=dan12
-      - MYSQL_DATABASE=mydrive
-      - MYSQL_USER=danil
-      - MYSQL_PASSWORD=dan12
+      - 5432:5432
+    environment:
+      POSTGRES_USER: danil
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: mydrive
