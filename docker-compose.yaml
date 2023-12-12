@@ -11,3 +11,11 @@ services:
       POSTGRES_USER: danil
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: mydrive
+
+
+  rmtp:
+    image: danilserenok/rmtp:release
+    ports:
+      - "8881:8881"
+    environment:
+      STREAM_PATH: /home/danya/ftp/files/
