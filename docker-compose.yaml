@@ -13,9 +13,8 @@ services:
       POSTGRES_DB: mydrive
 
 
-  rmtp:
-    image: danilserenok/rmtp:release
+  stream:
+    image: danilserenok/stream:latest
+    container_name: stream
     ports:
       - "8881:8881"
-    environment:
-      STREAM_PATH: /home/danya/ftp/files/
