@@ -15,12 +15,12 @@ services:
   zookeeper:
     image: wurstmeister/zookeeper
     ports:
-      - "2181:2181"
+      - 2181:2181
   
   kafka:
     image: wurstmeister/kafka
     ports:
-      - "9092:9092"
+      - 9092:9092
     environment:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.2.152:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
@@ -28,9 +28,26 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.20.0
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.20.0  # Replace with your desired Elasticsearch version
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
 
   stream:
     image: danilserenok/stream:latest
     container_name: stream
     ports:
-      - "8881:8881"
+      - 8881:8881
