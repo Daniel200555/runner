@@ -28,6 +28,18 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: danil
+      MONGO_INITDB_ROOT_PASSWORD: 1234
+      MONGO_INITDB_DATABASE: FileData
+      MONGO_INITDB_USERNAME: danila
+      MONGO_INITDB_PASSWORD: 12345
+
   kibana:
     image: docker.elastic.co/kibana/kibana:7.20.0
     container_name: kibana
