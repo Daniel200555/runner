@@ -48,7 +48,8 @@ services:
       - xpack.security.enabled=false
     ports:
       - 9200:9200
-      - 9300:9300
+      volumes:
+      - esdata:/usr/share/elasticsearch/data
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.15.0
