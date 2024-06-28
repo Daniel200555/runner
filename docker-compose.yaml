@@ -40,23 +40,23 @@ services:
       MONGO_INITDB_USERNAME: danila
       MONGO_INITDB_PASSWORD: 12345
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.20.0
-    container_name: kibana
-    ports:
-      - "5601:5601"
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-    depends_on:
-      - elasticsearch
-
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.20.0  # Replace with your desired Elasticsearch version
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
+      - xpack.security.enabled=false
     ports:
       - 9200:9200
+      - 9300:9300
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.0
+    container_name: kibana
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://localhost:9200
 
   stream:
     image: danilserenok/stream:latest
