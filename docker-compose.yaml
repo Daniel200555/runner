@@ -56,6 +56,14 @@ services:
     environment:
       ELASTICSEARCH_URL: http://elasticsearch:9200
 
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.15.0
+    container_name: logstash
+    ports:
+      - "5000:5000"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+
   stream:
     image: danilserenok/stream:latest
     container_name: stream
