@@ -37,8 +37,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: danil
       MONGO_INITDB_ROOT_PASSWORD: 1234
       MONGO_INITDB_DATABASE: FileData
-      MONGO_INITDB_USERNAME: danila
-      MONGO_INITDB_PASSWORD: 12345
 
   postgres-exporter:
     image: prometheuscommunity/postgres-exporter:latest
