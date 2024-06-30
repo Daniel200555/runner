@@ -60,6 +60,8 @@ services:
       - "5601:5601"
     environment:
       ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      ELASTICSEARCH_USERNAME: danil
+      ELASTICSEARCH_PASSWORD: 1234
     depends_on:
       - elasticsearch
 
