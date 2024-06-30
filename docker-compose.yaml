@@ -40,6 +40,16 @@ services:
       MONGO_INITDB_USERNAME: danila
       MONGO_INITDB_PASSWORD: 12345
 
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:latest
+    container_name: postgres-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgresql://danil:1234@postgres:5432/mydrive?sslmode=disable"
+    ports:
+      - "9187:9187"
+    depends_on:
+      - postgres
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -47,6 +57,8 @@ services:
       - ./prometheus:/etc/prometheus
     ports:
       - "9090:9090"
+    depends_on:
+      - postgres-exporter
 
   grafana:
     image: grafana/grafana:latest
