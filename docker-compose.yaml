@@ -21,8 +21,6 @@ services:
    kafka1:
     image: confluentinc/cp-kafka:7.0.1
     container_name: kafka1
-    depends_on:
-      - zookeeper
     ports:
       - "9092:9092"
     environment:
@@ -36,8 +34,6 @@ services:
   kafka2:
     image: confluentinc/cp-kafka:7.0.1
     container_name: kafka2
-    depends_on:
-      - zookeeper
     ports:
       - "9093:9092"
     environment:
@@ -51,8 +47,6 @@ services:
   kafka3:
     image: confluentinc/cp-kafka:7.0.1
     container_name: kafka3
-    depends_on:
-      - zookeeper
     ports:
       - "9094:9092"
     environment:
