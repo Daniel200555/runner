@@ -18,7 +18,7 @@ services:
       - "2181:2181"
 
   kafka:
-    image: wurstmeister/kafka:latest  # Исправлено: отступы
+    image: wurstmeister/kafka:latest
     container_name: kafka
     depends_on:
       - zookeeper
@@ -33,7 +33,6 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_MESSAGE_MAX_BYTES: 2000000000
       KAFKA_MAX_REQUEST_SIZE: 2000000000
-      KAFKA_MAX_PARTITION_FETCH_BYTES: 2000000000
       KAFKA_REPLICA_FETCH_MAX_BYTES: 2000000000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
