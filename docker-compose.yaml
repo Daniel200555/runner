@@ -66,6 +66,8 @@ services:
       - "9090:9090"
     depends_on:
       - postgres-exporter
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
 
   grafana:
     image: grafana/grafana:latest
