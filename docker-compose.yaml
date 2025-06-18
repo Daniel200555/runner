@@ -47,6 +47,19 @@ services:
     volumes:
       - mongo-data:/data/db
 
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: danil
+      MINIO_ROOT_PASSWORD: dan1234
+    volumes:
+      - minio-data:/data
+    command: server /data --console-address ":9001"
+
   postgres-exporter:
     image: prometheuscommunity/postgres-exporter:latest
     container_name: postgres-exporter
@@ -126,6 +139,7 @@ services:
       - 8881:8881
 
 volumes:
+  minio-data:
   mongo-data:
   esdata:
     driver: local
